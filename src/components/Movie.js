@@ -1,8 +1,6 @@
 import React, { Component, lazy, Suspense } from 'react';
 import T from 'prop-types';
 import { NavLink, Route, withRouter, Switch } from 'react-router-dom';
-// import Cast from '../pages/Cast';
-// import Reviews from '../pages/Reviews';
 
 const AsyncCast = lazy(() =>
   import('../pages/Cast' /* webpackChunkName: "cast-page" */),

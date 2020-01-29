@@ -1,8 +1,5 @@
 import React, { lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
-// import HomePage from '../pages/Home';
-// import MoviesPage from '../pages/Movies';
-// import MovieId from '../pages/MovieId';
 import NotFoundPage from '../pages/NotFound';
 import Nav from './Nav';
 
