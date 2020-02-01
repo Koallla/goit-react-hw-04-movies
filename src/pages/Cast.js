@@ -21,9 +21,21 @@ export default class Cast extends Component {
         <h1>CAST</h1>
         <ul>
           {casts.map(cast => (
-            <li key={cast.id}>
+            <li
+              style={{
+                display: 'block',
+              }}
+              key={cast.id}
+            >
               <img src={linkPoster + cast.profile_path} alt={cast.name} />
-              {cast.name}
+              <p
+                style={{
+                  marginTop: '0px',
+                  marginBottom: '20px',
+                }}
+              >
+                {cast.name}
+              </p>
             </li>
           ))}
         </ul>

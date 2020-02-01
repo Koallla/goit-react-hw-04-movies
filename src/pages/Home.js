@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { fetchMoviesTrending } from '../services/articles-api';
-import MoviesList from '../components/MoviesList';
+import MoviesList from '../components/MoviesList/MoviesList';
 
 export default class Home extends Component {
   state = {

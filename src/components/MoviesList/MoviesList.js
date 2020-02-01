@@ -1,12 +1,12 @@
 import React from 'react';
 import T from 'prop-types';
-
 import { Link, withRouter } from 'react-router-dom';
+import styles from './movieList.module.css';
 
 const MoviesList = ({ movies = [], location }) => (
   <ul>
     {movies.map(movie => (
-      <li key={movie.id}>
+      <li key={movie.id} className={styles.item}>
         <Link
           to={{
             pathname: `/movies/${movie.id}`,

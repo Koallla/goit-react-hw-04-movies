@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import T from 'prop-types';
 import queryString from 'query-string';
-import { fetchMovieSearch } from '../services/articles-api';
-import MoviesList from '../components/MoviesList';
+import { fetchMovieSearch } from '../../services/articles-api';
+import MoviesList from '../../components/MoviesList/MoviesList';
+import styles from './movies.module.css';
 
 const getQueryFromLocation = location =>
   queryString.parse(location.search).query;
@@ -64,7 +65,7 @@ class Movies extends Component {
 
     return (
       <div>
-        <form>
+        <form className={styles.form}>
           <input
             onChange={this.handleChange}
             type="text"

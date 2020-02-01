@@ -1,16 +1,21 @@
 import React, { Component, lazy, Suspense } from 'react';
 import T from 'prop-types';
 import { NavLink, Route, withRouter, Switch } from 'react-router-dom';
+import styles from './movie.module.css';
 
 const AsyncCast = lazy(() =>
-  import('../pages/Cast' /* webpackChunkName: "cast-page" */),
+  import('../../pages/Cast' /* webpackChunkName: "cast-page" */),
 );
 
 const AsyncReviews = lazy(() =>
-  import('../pages/Reviews' /* webpackChunkName: "reviews-page" */),
+  import('../../pages/Reviews' /* webpackChunkName: "reviews-page" */),
 );
 
 const linkPoster = `https://image.tmdb.org/t/p/w300`;
+
+const selected = {
+  color: 'red',
+};
 
 class Movie extends Component {
   static propTypes = {
@@ -74,7 +79,7 @@ class Movie extends Component {
 
     return (
       <article>
-        <button type="button" onClick={this.handleGoback}>
+        <button   className={styles.btn} type="button" onClick={this.handleGoback}>
           Go Back
         </button>
 
@@ -102,8 +107,9 @@ class Movie extends Component {
         <div>
           <p>Additional information</p>
           <ul>
-            <li>
+            <li className={styles.item}>
               <NavLink
+                activeStyle={selected}
                 to={{
                   pathname: `${match.url}/cast`,
                   state: { from: location },
@@ -113,8 +119,9 @@ class Movie extends Component {
                 Cast
               </NavLink>
             </li>
-            <li>
+            <li className={styles.item}>
               <NavLink
+                activeStyle={selected}
                 to={{
                   pathname: `${match.url}/reviews`,
                   state: { from: location },

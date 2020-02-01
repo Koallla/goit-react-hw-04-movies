@@ -13,6 +13,9 @@ body {
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   font-size: 16px;
   line-height: 1.5;
+  color: rgb(255, 255, 255);
+  background-image: url(./Img/65d05e679b65239f2ecf3beaa8292b3c.jpg);
+  background-size: cover;
 }
 
 button,
@@ -20,4 +23,13 @@ input,
 select {
   cursor: pointer;
   font-family: inherit;
+}
+
+a {
+  color: rgb(175, 216, 165);
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
 }

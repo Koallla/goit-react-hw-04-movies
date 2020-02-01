@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Movie from '../components/Movie';
+import Movie from '../components/Movie/Movie';
 import { fetchMovieWithId } from '../services/articles-api';
 
 const getIdFromProps = props => props.match.params.id;
