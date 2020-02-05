@@ -62,6 +62,7 @@ class Movies extends Component {
 
   render() {
     const { moviesSearch, searchQuery } = this.state;
+    console.log(moviesSearch);
 
     return (
       <div>
@@ -76,7 +77,7 @@ class Movies extends Component {
             <span>Search</span>
           </button>
         </form>
-        <MoviesList movies={moviesSearch} />
+        {moviesSearch.length > 0 && <MoviesList movies={moviesSearch} />}
       </div>
     );
   }

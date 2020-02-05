@@ -1,10 +1,11 @@
+/* eslint-disable camelcase */
 import React, { Component, lazy, Suspense } from 'react';
 import T from 'prop-types';
 import { NavLink, Route, withRouter, Switch } from 'react-router-dom';
 import styles from './movie.module.css';
 
 const AsyncCast = lazy(() =>
-  import('../../pages/Cast' /* webpackChunkName: "cast-page" */),
+  import('../../pages/Cast/Cast' /* webpackChunkName: "cast-page" */),
 );
 
 const AsyncReviews = lazy(() =>
@@ -29,6 +30,9 @@ class Movie extends Component {
       pathname: T.string,
     }).isRequired,
     match: T.shape({
+      params: T.shape({
+        id: T.string,
+      }),
       url: T.string,
       path: T.string,
     }).isRequired,
@@ -78,68 +82,69 @@ class Movie extends Component {
     } = this.props;
 
     return (
-      <article>
-        <button   className={styles.btn} type="button" onClick={this.handleGoback}>
-          Go Back
-        </button>
-
-        <h2>{title} </h2>
-
-        {poster_path ? (
-          <img src={linkPoster + poster_path} alt={title} />
-        ) : (
-          <></>
-        )}
-
-        <p>
-          <b>Popularity: {popularity}</b>
-        </p>
-        <p>Overview: {overview}</p>
-
-        <ul>
-          {genres ? (
-            genres.map(genre => <li key={genre.id}>{genre.name}</li>)
+      <>
+        <article>
+          <button
+            className={styles.btn}
+            type="button"
+            onClick={this.handleGoback}
+          >
+            Go Back
+          </button>
+          <h2>{title} </h2>
+          {poster_path ? (
+            <img src={linkPoster + poster_path} alt={title} />
           ) : (
             <></>
           )}
-        </ul>
-
-        <div>
-          <p>Additional information</p>
+          <p>
+            <b>Popularity: {popularity}</b>
+          </p>
+          <p>Overview: {overview}</p>
           <ul>
-            <li className={styles.item}>
-              <NavLink
-                activeStyle={selected}
-                to={{
-                  pathname: `${match.url}/cast`,
-                  state: { from: location },
-                }}
-                replace
-              >
-                Cast
-              </NavLink>
-            </li>
-            <li className={styles.item}>
-              <NavLink
-                activeStyle={selected}
-                to={{
-                  pathname: `${match.url}/reviews`,
-                  state: { from: location },
-                }}
-                replace
-              >
-                Revievs
-              </NavLink>
-            </li>
+            {genres ? (
+              genres.map(genre => <li key={genre.id}>{genre.name}</li>)
+            ) : (
+              <></>
+            )}
           </ul>
-        </div>
+          <div>
+            <p>Additional information</p>
+            <ul>
+              <li className={styles.item}>
+                <NavLink
+                  activeStyle={selected}
+                  to={{
+                    pathname: `${match.url}/cast`,
+                    state: { from: location },
+                  }}
+                  replace
+                >
+                  Cast
+                </NavLink>
+              </li>
+              <li className={styles.item}>
+                <NavLink
+                  activeStyle={selected}
+                  to={{
+                    pathname: `${match.url}/reviews`,
+                    state: { from: location },
+                  }}
+                  replace
+                >
+                  Revievs
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        </article>
         <Suspense fallback={<h2>Loading...</h2>}>
           <Switch>
-            <Route path={`${match.path}/cast`} component={AsyncCast} />
-            <Route path={`${match.path}/reviews`} component={AsyncReviews} />
+            <Route path="/movies/:id/cast" exact component={AsyncCast} />
+            <Route path="/movies/:id/reviews" exact component={AsyncReviews} />
           </Switch>
         </Suspense>
-      </article>
+      </>
     );
   }
 }

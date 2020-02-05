@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { fetchMovieCast } from '../services/articles-api';
+import { fetchMovieCast } from '../../services/articles-api';
+import styles from './cast.module.css';
 
 const linkPoster = `https://image.tmdb.org/t/p/w300`;
 const getMovieId = props => props.match.params.id;
@@ -19,23 +20,11 @@ export default class Cast extends Component {
     return (
       <div>
         <h1>CAST</h1>
-        <ul>
+        <ul className={styles.list}>
           {casts.map(cast => (
-            <li
-              style={{
-                display: 'block',
-              }}
-              key={cast.id}
-            >
-              <img src={linkPoster + cast.profile_path} alt={cast.name} />
-              <p
-                style={{
-                  marginTop: '0px',
-                  marginBottom: '20px',
-                }}
-              >
-                {cast.name}
-              </p>
+            <li key={cast.id}>
+              <img src={linkPoster + cast.profile_path} alt="photoActor" />
+              <p>{cast.name}</p>
             </li>
           ))}
         </ul>

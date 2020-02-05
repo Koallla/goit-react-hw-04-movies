@@ -14,8 +14,7 @@ body {
   font-size: 16px;
   line-height: 1.5;
   color: rgb(255, 255, 255);
-  background-image: url(./Img/65d05e679b65239f2ecf3beaa8292b3c.jpg);
-  background-size: cover;
+  background-color: rgb(75, 75, 75);
 }
 
 button,
